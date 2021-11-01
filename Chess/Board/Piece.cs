@@ -22,5 +22,9 @@ namespace Chess.Board
             this.AmountOfMoves = 0;
         }
 
+        public void incMoves() {
+            AmountOfMoves++;
+        }
+
     }
 }
