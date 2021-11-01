@@ -10,6 +10,8 @@ namespace Chess
         {
             BoardCF board = new BoardCF(8, 8);
 
+            Screen.ShowBoard(board);
+
             Console.ReadLine();
         }
     }
