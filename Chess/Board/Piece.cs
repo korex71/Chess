@@ -14,11 +14,11 @@ namespace Chess.Board
         public int AmountOfMoves { get; protected set; }
         public BoardCF board { get; protected set; }
 
-        public Piece(Position position, BoardCF board, Color color)
+        public Piece(BoardCF board, Color color)
         {
-            this.position = position;
             this.board = board;
             this.color = color;
+            this.position = null;
             this.AmountOfMoves = 0;
         }
 
