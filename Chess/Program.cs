@@ -1,5 +1,6 @@
 ﻿using Board;
 using Chess.Board;
+using Chess;
 using System;
 
 namespace Chess
@@ -8,11 +9,22 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            PositionChess pos = new PositionChess('c', 7);
 
-            Console.WriteLine(pos);
+            try
+            {
+                BoardCF board = new(8, 8);
 
-            Console.WriteLine(pos.toPosition());
+                board.insertPiece(new Tower(board, Color.Black), new Position(0, 0));
+                board.insertPiece(new Tower(board, Color.Black), new Position(1, 3));
+                board.insertPiece(new King(board, Color.Black), new Position(2, 4));
+                board.insertPiece(new King(board, Color.White), new Position(7, 1));
+
+                Screen.ShowBoard(board);
+            }
+            catch (BoardException e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
             Console.ReadLine();
         }
