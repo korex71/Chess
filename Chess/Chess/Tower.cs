@@ -1,7 +1,7 @@
 ﻿using Board;
 using Chess.Board;
 
-namespace Chess.Chess
+namespace Chess
 {
     class Tower : Piece
     {
