@@ -19,6 +19,8 @@ namespace Chess
                 board.insertPiece(new King(board, Color.Black), new Position(2, 4));
                 board.insertPiece(new King(board, Color.White), new Position(7, 1));
 
+                board.insertPiece(new Tower(board, Color.White), new Position(3, 5));
+
                 Screen.ShowBoard(board);
             }
             catch (BoardException e)

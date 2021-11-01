@@ -1,5 +1,6 @@
 ﻿using System;
 using Board;
+using Chess.Board;
 
 namespace Chess
 {
@@ -19,7 +20,8 @@ namespace Chess
                         Console.Write("- ");
                     } else
                     {
-                        Console.Write(board.piece(i, j) + " ");
+                        ShowPiece(board.piece(i, j));
+                        Console.Write(" ");
                     }
 
                 }
@@ -27,7 +29,9 @@ namespace Chess
                 Console.WriteLine();
             }
 
-            for(int b = 0; b < board.columns + 1; b++)
+            //Console.WriteLine("  A B C D E F G H");
+
+            for (int b = 0; b < board.columns + 1; b++)
             {
                 if(b == 0)
                 {
@@ -36,6 +40,25 @@ namespace Chess
                 {
                     Console.Write(cLabels[b - 1] + " ");
                 }
+            }
+            
+        }
+
+        private static void ShowPiece(Piece piece)
+        {
+            if (piece.color == Color.White)
+            {
+                Console.Write(piece);
+            }
+            else
+            {
+                ConsoleColor aux = Console.ForegroundColor;
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+
+                Console.Write(piece);
+
+                Console.ForegroundColor = aux;
             }
         }
     }
