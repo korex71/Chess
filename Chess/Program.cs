@@ -14,26 +14,38 @@ namespace Chess
 
                 while (!party.finished)
                 {
-                    Console.Clear();
+                    try
+                    {
+                        Console.Clear();
 
-                    Screen.ShowBoard(party.board);
-                    Console.WriteLine();
-                    Console.WriteLine("Turno: " + party.turn);
-                    Console.WriteLine("Aguardando jogada: " + party.currentPlayer);
+                        Screen.ShowBoard(party.board);
+                        Console.WriteLine();
+                        Console.WriteLine("Turno: " + party.turn);
+                        Console.WriteLine("Aguardando jogada: " + party.currentPlayer);
 
-                    Console.WriteLine();
-                    Console.Write("Origem:");
-                    Position origin = Screen.readPositionChess().toPosition();
+                        Console.WriteLine();
+                        Console.Write("Origem:");
+                        Position origin = Screen.readPositionChess().toPosition();
 
-                    bool[,] possiblePositions = party.board.piece(origin).possibleMoves();
+                        party.validateOriginPosition(origin);
 
-                    Console.Clear();
-                    Screen.ShowBoard(party.board, possiblePositions);
+                        bool[,] possiblePositions = party.board.piece(origin).possibleMoves();
 
-                    Console.Write("Destino:");
-                    Position destiny = Screen.readPositionChess().toPosition();
+                        Console.Clear();
+                        Screen.ShowBoard(party.board, possiblePositions);
 
-                    party.makePlay(origin, destiny);
+                        Console.Write("Destino:");
+                        Position destiny = Screen.readPositionChess().toPosition();
+
+                        party.validateDestinyPosition(origin, destiny);
+
+                        party.makePlay(origin, destiny);
+                    }
+                    catch (BoardException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.ReadLine();
+                    }
 
                 }
 

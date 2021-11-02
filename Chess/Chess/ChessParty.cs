@@ -48,19 +48,43 @@ namespace Chess
             changePlayer();
         }
 
+        public void validateOriginPosition(Position pos) {  
+            if(board.piece(pos) == null)
+            {
+                throw new BoardException("Não existe peça na posição de origem escolhida");
+            }
+
+            if(currentPlayer != board.piece(pos).color)
+            {
+                throw new BoardException($"É a vez de: {currentPlayer}");
+            }
+
+            if (!board.piece(pos).havePossibleMovements())
+            {
+                throw new BoardException("Não há movimentos possíveis para a peça de origem escolhida.");
+            }
+        }
+
+        public void validateDestinyPosition(Position origin, Position destiny)
+        {
+            if (!board.piece(origin).canMoveTo(destiny))
+            {
+                throw new BoardException("Posição de destino inválida");
+            }
+        }
+
         private void insertPieces()
         {
-            board.insertPiece(new Tower(board, Color.White), new PositionChess('c', 1).toPosition());
+            //B
+            board.insertPiece(new Tower(board, Color.Black), new PositionChess('c', 1).toPosition());
+            board.insertPiece(new King(board, Color.Black), new PositionChess('d', 1).toPosition());
+            board.insertPiece(new Tower(board, Color.Black), new PositionChess('e', 1).toPosition());
 
-            board.insertPiece(new Tower(board, Color.Black), new PositionChess('a', 2).toPosition());
-            board.insertPiece(new Tower(board, Color.Black), new PositionChess('b', 2).toPosition());
             board.insertPiece(new Tower(board, Color.Black), new PositionChess('c', 2).toPosition());
             board.insertPiece(new Tower(board, Color.Black), new PositionChess('d', 2).toPosition());
             board.insertPiece(new Tower(board, Color.Black), new PositionChess('e', 2).toPosition());
-            board.insertPiece(new Tower(board, Color.Black), new PositionChess('f', 2).toPosition());
-            board.insertPiece(new Tower(board, Color.Black), new PositionChess('g', 2).toPosition());
-            board.insertPiece(new Tower(board, Color.Black), new PositionChess('h', 2).toPosition());
 
+            //W
             board.insertPiece(new Tower(board, Color.White), new PositionChess('a', 7).toPosition());
             board.insertPiece(new Tower(board, Color.White), new PositionChess('b', 7).toPosition());
             board.insertPiece(new Tower(board, Color.White), new PositionChess('c', 7).toPosition());
