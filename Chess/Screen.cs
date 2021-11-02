@@ -36,12 +36,24 @@ namespace Chess
                 if(b == 0)
                 {
                     Console.Write("  ");
-                } else
-                {
-                    Console.Write(cLabels[b - 1] + " ");
+                    continue;
                 }
+                
+                Console.Write(cLabels[b - 1] + " ");
             }
             
+        }
+
+        public static PositionChess readPositionChess()
+        {
+            string s = Console.ReadLine();
+
+            char column = s[0];
+
+            int line = int.Parse(s[1] + "");
+
+            return new PositionChess(column, line);
+
         }
 
         private static void ShowPiece(Piece piece)

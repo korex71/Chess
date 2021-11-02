@@ -7,12 +7,14 @@ namespace Chess
         public BoardCF board { get; private set; }
         private int turn;
         private Color currentPlayer;
+        public bool finished { get; private set; }
 
         public ChessParty()
         {
             board = new BoardCF(8, 8);
             turn = 1;
             currentPlayer = Color.White;
+            finished = false;
             insertPieces();
         }
 
