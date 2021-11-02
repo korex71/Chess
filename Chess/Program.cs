@@ -17,6 +17,9 @@ namespace Chess
                     Console.Clear();
 
                     Screen.ShowBoard(party.board);
+                    Console.WriteLine();
+                    Console.WriteLine("Turno: " + party.turn);
+                    Console.WriteLine("Aguardando jogada: " + party.currentPlayer);
 
                     Console.WriteLine();
                     Console.Write("Origem:");
@@ -30,7 +33,7 @@ namespace Chess
                     Console.Write("Destino:");
                     Position destiny = Screen.readPositionChess().toPosition();
 
-                    party.MakeMovement(origin, destiny);
+                    party.makePlay(origin, destiny);
 
                 }
 

@@ -5,9 +5,11 @@ namespace Chess
 {
     class ChessParty {
         public BoardCF board { get; private set; }
-        private int turn;
-        private Color currentPlayer;
+        public int turn;
+        public Color currentPlayer;
         public bool finished { get; private set; }
+
+
 
         public ChessParty()
         {
@@ -27,6 +29,23 @@ namespace Chess
             Piece capturedPiece = board.removePiece(destiny);
 
             board.insertPiece(p, destiny);
+        }
+
+        private void changePlayer()
+        {
+            if(currentPlayer == Color.White)
+            {
+                currentPlayer = Color.Black;
+            }else {
+                currentPlayer = Color.White;
+            }
+        }
+
+        public void makePlay(Position origin, Position destiny)
+        {
+            MakeMovement(origin, destiny);
+            turn++;
+            changePlayer();
         }
 
         private void insertPieces()
