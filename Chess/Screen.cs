@@ -8,40 +8,51 @@ namespace Chess
     {
         public static void ShowBoard(BoardCF board)
         {
-            string[] cLabels = { "A", "B", "C", "D", "E", "F", "G", "H" }; // Column Labels
+            //string[] cLabels = { "A", "B", "C", "D", "E", "F", "G", "H" }; // Column Labels
 
             for (int i = 0; i < board.lines; i++)
             {
                 Console.Write(8 - i + " ");
-                for(int j = 0; j < board.columns; j++)
-                {
-                    if(board.piece(i,j) == null)
-                    {
-                        Console.Write("- ");
-                    } else
-                    {
+                for(int j = 0; j < board.columns; j++) {
                         ShowPiece(board.piece(i, j));
-                        Console.Write(" ");
-                    }
-
                 }
 
                 Console.WriteLine();
             }
 
-            //Console.WriteLine("  A B C D E F G H");
+            Console.WriteLine("  A B C D E F G H");
 
-            for (int b = 0; b < board.columns + 1; b++)
+        }
+
+        public static void ShowBoard(BoardCF board, bool[,] possiblePositions)
+        {
+            //string[] cLabels = { "A", "B", "C", "D", "E", "F", "G", "H" }; // Column Labels
+
+            ConsoleColor originalBg = Console.BackgroundColor;
+
+            ConsoleColor newBg = ConsoleColor.DarkGray;
+
+            for (int i = 0; i < board.lines; i++)
             {
-                if(b == 0)
-                {
-                    Console.Write("  ");
-                    continue;
+                Console.Write(8 - i + " ");
+                for (int j = 0; j < board.columns; j++) {
+                    if(possiblePositions[i, j]) {
+                        Console.BackgroundColor = newBg;
+                    } else
+                    {
+                        Console.BackgroundColor = originalBg;
+                    }
+
+                    ShowPiece(board.piece(i, j));
+                    Console.BackgroundColor = originalBg;
                 }
-                
-                Console.Write(cLabels[b - 1] + " ");
+
+                Console.WriteLine();
             }
-            
+
+            Console.WriteLine("  A B C D E F G H");
+            Console.BackgroundColor = originalBg;
+
         }
 
         public static PositionChess readPositionChess()
@@ -58,20 +69,30 @@ namespace Chess
 
         private static void ShowPiece(Piece piece)
         {
-            if (piece.color == Color.White)
+
+            if(piece == null)
             {
-                Console.Write(piece);
-            }
-            else
+                Console.Write("- ");
+            } else
             {
-                ConsoleColor aux = Console.ForegroundColor;
+                if (piece.color == Color.White)
+                {
+                    Console.Write(piece);
+                }
+                else
+                {
+                    ConsoleColor aux = Console.ForegroundColor;
 
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
 
-                Console.Write(piece);
+                    Console.Write(piece);
 
-                Console.ForegroundColor = aux;
+                    Console.ForegroundColor = aux;
+                }
+                Console.Write(" ");
             }
+
+            
         }
     }
 }
