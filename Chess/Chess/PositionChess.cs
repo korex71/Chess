@@ -4,21 +4,21 @@ namespace Chess
 {
     class PositionChess
     {
-        public char column { get; set; }
-        public int line { get; set; }
+        public char Column { get; set; }
+        public int Line { get; set; }
 
         public PositionChess(char column, int line)
         {
-            this.column = column;
-            this.line = line;
+            Column = column;
+            Line = line;
         }
 
-        public Position toPosition() {
-            return new Position(8 - line, column - 'a');
+        public Position ToPosition() {
+            return new Position(8 - Line, Column - 'a');
         }
 
         public override string ToString() {
-            return "" + column + line;
+            return "" + Column + Line;
         }
     }
 }

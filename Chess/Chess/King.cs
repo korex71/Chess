@@ -13,89 +13,89 @@ namespace Chess
             return "R";
         }
 
-        private bool canMove(Position pos)
+        private bool CanMove(Position pos)
         {
-            Piece p = board.piece(pos);
+            Piece p = Board.Piece(pos);
 
-            return p == null || p.color != color;
+            return p == null || p.Color != Color;
         }
 
         public override bool[,] possibleMoves()
         {
-            bool[,] matriz = new bool[board.lines, board.columns]; // Matriz booleana de possíveis movimentos
+            bool[,] matriz = new bool[Board.Lines, Board.Columns]; // Matriz booleana de possíveis movimentos
 
             Position pos = new(0, 0);
 
-            void validMove()
+            void ValidMove()
             {
-                if (board.isValidPosition(pos) && canMove(pos))
+                if (Board.IsValidPosition(pos) && CanMove(pos))
                 {
-                    matriz[pos.line, pos.column] = true;
+                    matriz[pos.Line, pos.Column] = true;
                 }
             }
 
             // N
-            pos.setValues(position.line - 1, position.column);
+            pos.SetValues(Position.Line - 1, Position.Column);
             
-            if(board.isValidPosition(pos) && canMove(pos))
+            if(Board.IsValidPosition(pos) && CanMove(pos))
             {
-                matriz[pos.line, pos.column] = true;
+                matriz[pos.Line, pos.Column] = true;
             }
 
             // NE
-            pos.setValues(position.line - 1, position.column + 1);
+            pos.SetValues(Position.Line - 1, Position.Column + 1);
 
-            if(board.isValidPosition(pos) && canMove(pos))
+            if(Board.IsValidPosition(pos) && CanMove(pos))
             {
-                matriz[pos.line, pos.column] = true;
+                matriz[pos.Line, pos.Column] = true;
             }
 
             // L
-            pos.setValues(position.line, position.column + 1);
+            pos.SetValues(Position.Line, Position.Column + 1);
 
-            if (board.isValidPosition(pos) && canMove(pos))
+            if (Board.IsValidPosition(pos) && CanMove(pos))
             {
-                matriz[pos.line, pos.column] = true;
+                matriz[pos.Line, pos.Column] = true;
             }
 
             // SE
-            pos.setValues(position.line + 1, position.column + 1);
+            pos.SetValues(Position.Line + 1, Position.Column + 1);
 
-            if (board.isValidPosition(pos) && canMove(pos))
+            if (Board.IsValidPosition(pos) && CanMove(pos))
             {
-                matriz[pos.line, pos.column] = true;
+                matriz[pos.Line, pos.Column] = true;
             }
 
             // S
-            pos.setValues(position.line + 1, position.column);
+            pos.SetValues(Position.Line + 1, Position.Column);
 
-            if (board.isValidPosition(pos) && canMove(pos))
+            if (Board.IsValidPosition(pos) && CanMove(pos))
             {
-                matriz[pos.line, pos.column] = true;
+                matriz[pos.Line, pos.Column] = true;
             }
 
             // SO
-            pos.setValues(position.line + 1, position.column - 1);
+            pos.SetValues(Position.Line + 1, Position.Column - 1);
 
-            if (board.isValidPosition(pos) && canMove(pos))
+            if (Board.IsValidPosition(pos) && CanMove(pos))
             {
-                matriz[pos.line, pos.column] = true;
+                matriz[pos.Line, pos.Column] = true;
             }
 
             // O
-            pos.setValues(position.line, position.column - 1);
+            pos.SetValues(Position.Line, Position.Column - 1);
 
-            if (board.isValidPosition(pos) && canMove(pos))
+            if (Board.IsValidPosition(pos) && CanMove(pos))
             {
-                matriz[pos.line, pos.column] = true;
+                matriz[pos.Line, pos.Column] = true;
             }
 
             // NO
-            pos.setValues(position.line - 1, position.column - 1);
+            pos.SetValues(Position.Line - 1, Position.Column - 1);
 
-            if (board.isValidPosition(pos) && canMove(pos))
+            if (Board.IsValidPosition(pos) && CanMove(pos))
             {
-                matriz[pos.line, pos.column] = true;
+                matriz[pos.Line, pos.Column] = true;
             }
 
             return matriz;

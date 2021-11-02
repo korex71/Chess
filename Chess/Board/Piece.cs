@@ -4,28 +4,28 @@ namespace Chess.Board
 {
     abstract class Piece
     {
-        public Position position { get; set; }
-        public Color color { get; protected set; }
+        public Position Position { get; set; }
+        public Color Color { get; protected set; }
         public int AmountOfMoves { get; protected set; }
-        public BoardCF board { get; protected set; }
+        public BoardCF Board { get; protected set; }
 
         public Piece(BoardCF board, Color color)
         {
-            this.board = board;
-            this.color = color;
-            this.position = null;
-            this.AmountOfMoves = 0;
+            Board = board;
+            Color = color;
+            Position = null;
+            AmountOfMoves = 0;
         }
 
         public abstract bool[,] possibleMoves();
 
-        public bool havePossibleMovements()
+        public bool HavePossibleMovements()
         {
             bool[,] matriz = possibleMoves();
 
-            for(int i = 0; i < board.lines; i++)
+            for(int i = 0; i < Board.Lines; i++)
             {
-                for(int j = 0; j < board.columns; j++)
+                for(int j = 0; j < Board.Columns; j++)
                 {
                     if(matriz[i, j]) {
                         return true;
@@ -36,12 +36,12 @@ namespace Chess.Board
             return false;
         }
 
-        public bool canMoveTo(Position pos)
+        public bool CanMoveTo(Position pos)
         {
-            return possibleMoves()[pos.line, pos.column];
+            return possibleMoves()[pos.Line, pos.Column];
         }
 
-        public void incMoves() {
+        public void IncMoves() {
             AmountOfMoves++;
         }
 

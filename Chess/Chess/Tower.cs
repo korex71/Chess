@@ -15,84 +15,84 @@ namespace Chess
             return "T";
         }
 
-        private bool canMove(Position pos)
+        private bool CanMove(Position pos)
         {
-            Piece p = board.piece(pos);
+            Piece p = Board.Piece(pos);
 
-            return p == null || p.color != color;
+            return p == null || p.Color != Color;
         }
 
         public override bool[,] possibleMoves()
         {
-            bool[,] matriz = new bool[board.lines, board.columns]; // Matriz booleana de possíveis movimentos
+            bool[,] matriz = new bool[Board.Lines, Board.Columns]; // Matriz booleana de possíveis movimentos
 
             Position pos = new(0, 0); // ~~ (7, 7) <- Max
 
-            void validMove()
+            void ValidMove()
             {
-                if (board.isValidPosition(pos) && canMove(pos))
+                if (Board.IsValidPosition(pos) && CanMove(pos))
                 {
-                    matriz[pos.line, pos.column] = true;
+                    matriz[pos.Line, pos.Column] = true;
                 }
             }
 
             // Up
-            pos.setValues(position.line - 1, position.column);
+            pos.SetValues(Position.Line - 1, Position.Column);
 
-            while(board.isValidPosition(pos) && canMove(pos)) {
-                matriz[pos.line, pos.column] = true;
+            while(Board.IsValidPosition(pos) && CanMove(pos)) {
+                matriz[pos.Line, pos.Column] = true;
 
-                if(board.piece(pos) != null && board.piece(pos).color != color)
+                if(Board.Piece(pos) != null && Board.Piece(pos).Color != Color)
                 {
                     break;
                 }
 
-                pos.line = pos.line - 1;
+                pos.Line--;
             }
 
             // Down
-            pos.setValues(position.line + 1, position.column);
+            pos.SetValues(Position.Line + 1, Position.Column);
 
-            while (board.isValidPosition(pos) && canMove(pos))
+            while (Board.IsValidPosition(pos) && CanMove(pos))
             {
-                matriz[pos.line, pos.column] = true;
+                matriz[pos.Line, pos.Column] = true;
 
-                if (board.piece(pos) != null && board.piece(pos).color != color)
+                if (Board.Piece(pos) != null && Board.Piece(pos).Color != Color)
                 {
                     break;
                 }
 
-                pos.line = pos.line + 1;
+                pos.Line++;
             }
 
             // Right
-            pos.setValues(position.line, position.column + 1);
+            pos.SetValues(Position.Line, Position.Column + 1);
 
-            while (board.isValidPosition(pos) && canMove(pos))
+            while (Board.IsValidPosition(pos) && CanMove(pos))
             {
-                matriz[pos.line, pos.column] = true;
+                matriz[pos.Line, pos.Column] = true;
 
-                if (board.piece(pos) != null && board.piece(pos).color != color)
+                if (Board.Piece(pos) != null && Board.Piece(pos).Color != Color)
                 {
                     break;
                 }
 
-                pos.column = pos.column + 1;
+                pos.Column++;
             }
 
             // Left
-            pos.setValues(position.line, position.column - 1);
+            pos.SetValues(Position.Line, Position.Column - 1);
 
-            while (board.isValidPosition(pos) && canMove(pos))
+            while (Board.IsValidPosition(pos) && CanMove(pos))
             {
-                matriz[pos.line, pos.column] = true;
+                matriz[pos.Line, pos.Column] = true;
 
-                if (board.piece(pos) != null && board.piece(pos).color != color)
+                if (Board.Piece(pos) != null && Board.Piece(pos).Color != Color)
                 {
                     break;
                 }
 
-                pos.column = pos.column - 1;
+                pos.Column--;
             }
 
 

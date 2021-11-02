@@ -10,11 +10,11 @@ namespace Chess
         {
             //string[] cLabels = { "A", "B", "C", "D", "E", "F", "G", "H" }; // Column Labels
 
-            for (int i = 0; i < board.lines; i++)
+            for (int i = 0; i < board.Lines; i++)
             {
                 Console.Write(8 - i + " ");
-                for(int j = 0; j < board.columns; j++) {
-                        ShowPiece(board.piece(i, j));
+                for(int j = 0; j < board.Columns; j++) {
+                        ShowPiece(board.Piece(i, j));
                 }
 
                 Console.WriteLine();
@@ -32,10 +32,10 @@ namespace Chess
 
             ConsoleColor newBg = ConsoleColor.DarkGray;
 
-            for (int i = 0; i < board.lines; i++)
+            for (int i = 0; i < board.Lines; i++)
             {
                 Console.Write(8 - i + " ");
-                for (int j = 0; j < board.columns; j++) {
+                for (int j = 0; j < board.Columns; j++) {
                     if(possiblePositions[i, j]) {
                         Console.BackgroundColor = newBg;
                     } else
@@ -43,7 +43,7 @@ namespace Chess
                         Console.BackgroundColor = originalBg;
                     }
 
-                    ShowPiece(board.piece(i, j));
+                    ShowPiece(board.Piece(i, j));
                     Console.BackgroundColor = originalBg;
                 }
 
@@ -55,7 +55,7 @@ namespace Chess
 
         }
 
-        public static PositionChess readPositionChess()
+        public static PositionChess ReadPositionChess()
         {
             string s = Console.ReadLine();
 
@@ -75,7 +75,7 @@ namespace Chess
                 Console.Write("- ");
             } else
             {
-                if (piece.color == Color.White)
+                if (piece.Color == Color.White)
                 {
                     Console.Write(piece);
                 }

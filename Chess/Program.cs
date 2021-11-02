@@ -12,34 +12,34 @@ namespace Chess
             {
                 ChessParty party = new();
 
-                while (!party.finished)
+                while (!party.Finished)
                 {
                     try
                     {
                         Console.Clear();
 
-                        Screen.ShowBoard(party.board);
+                        Screen.ShowBoard(party.Board);
                         Console.WriteLine();
-                        Console.WriteLine("Turno: " + party.turn);
-                        Console.WriteLine("Aguardando jogada: " + party.currentPlayer);
+                        Console.WriteLine($"Turno: {party.Turn}");
+                        Console.WriteLine($"Aguardando jogada: {party.CurrentPlayer}");
 
                         Console.WriteLine();
                         Console.Write("Origem:");
-                        Position origin = Screen.readPositionChess().toPosition();
+                        Position origin = Screen.ReadPositionChess().ToPosition();
 
-                        party.validateOriginPosition(origin);
+                        party.ValidateOriginPosition(origin);
 
-                        bool[,] possiblePositions = party.board.piece(origin).possibleMoves();
+                        bool[,] possiblePositions = party.Board.Piece(origin).possibleMoves();
 
                         Console.Clear();
-                        Screen.ShowBoard(party.board, possiblePositions);
+                        Screen.ShowBoard(party.Board, possiblePositions);
 
                         Console.Write("Destino:");
-                        Position destiny = Screen.readPositionChess().toPosition();
+                        Position destiny = Screen.ReadPositionChess().ToPosition();
 
-                        party.validateDestinyPosition(origin, destiny);
+                        party.ValidateDestinyPosition(origin, destiny);
 
-                        party.makePlay(origin, destiny);
+                        party.MakePlay(origin, destiny);
                     }
                     catch (BoardException e)
                     {
