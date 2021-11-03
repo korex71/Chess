@@ -40,9 +40,7 @@ namespace Chess
                         party.ValidateDestinyPosition(origin, destiny);
 
                         party.MakePlay(origin, destiny);
-                    }
-                    catch (BoardException e)
-                    {
+                    } catch (BoardException e) {
                         Console.WriteLine(e.Message);
                         Console.ReadLine();
                     }

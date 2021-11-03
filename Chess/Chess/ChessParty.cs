@@ -43,6 +43,10 @@ namespace Chess
 
         public void MakePlay(Position origin, Position destiny)
         {
+            //if (Check)
+            //{
+            //    throw new BoardException($"Seu rei está em xeque, mova o rei.");
+            //}
             MakeMovement(origin, destiny);
             Turn++;
             ChangePlayer();
@@ -67,6 +71,10 @@ namespace Chess
 
         public void ValidateDestinyPosition(Position origin, Position destiny)
         {
+            //if(Board.Piece(origin).ToString() == "R") {
+
+            //}
+
             if (!Board.Piece(origin).CanMoveTo(destiny))
             {
                 throw new BoardException("Posição de destino inválida");
@@ -86,15 +94,28 @@ namespace Chess
             Board.InsertPiece(new Tower(Board, Color.Black), new PositionChess('e', 2).ToPosition());
 
             //W
-            Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('a', 7).ToPosition());
-            Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('b', 7).ToPosition());
-            Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('c', 7).ToPosition());
-            Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('d', 7).ToPosition());
-            Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('e', 7).ToPosition());
-            Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('f', 7).ToPosition());
-            Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('g', 7).ToPosition());
-            Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('h', 7).ToPosition());
+            //Board.InsertPiece(new Bishop(Board, Color.White), new PositionChess('d', 4).ToPosition());
+            //Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('a', 7).ToPosition());
+            //Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('b', 7).ToPosition());
+            //Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('c', 7).ToPosition());
+            //Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('d', 7).ToPosition());
+            //Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('e', 7).ToPosition());
+            //Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('f', 7).ToPosition());
+            //Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('g', 7).ToPosition());
+            //Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('h', 7).ToPosition());
 
+        }
+
+        private void InsertPiecesDefaultGame()
+        {
+            char[] Houses = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
+
+            for(int i = 0; i < Houses.Length; i++)
+            {
+                char House = Houses[i];
+
+                Board.InsertPiece(new Pawn(Board, Color.White), new PositionChess(House, 2).ToPosition()); // Insere todos os peões de a-h na segunda fileira ; Brancas
+            };
 
         }
     }
