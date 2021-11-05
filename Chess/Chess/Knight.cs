@@ -12,7 +12,7 @@ namespace Chess
 
         public override string ToString()
         {
-            return "KN";
+            return "C";
         }
 
         private bool CanMove(Position pos)
@@ -28,34 +28,67 @@ namespace Chess
 
             Position pos = new(0, 0);
 
-            // 2xUp Left
+            // 2xUp left
 
             pos.SetValues(Position.Line - 2, Position.Column - 1);
 
-            if (Board.IsValidPosition(pos) && CanMove(pos))
-            {
+            if(Board.IsValidPosition(pos) && CanMove(pos)) {
                 matriz[pos.Line, pos.Column] = true;
             }
 
+            // 2xUp right
 
-            // 2xUp Right
             pos.SetValues(Position.Line - 2, Position.Column + 1);
 
+            if(Board.IsValidPosition(pos) && CanMove(pos)) {
+                matriz[pos.Line, pos.Column] = true;
+            }
+
+            // Up 2xLeft
+
+            pos.SetValues(Position.Line - 1, Position.Column - 2);
+
             if (Board.IsValidPosition(pos) && CanMove(pos))
             {
                 matriz[pos.Line, pos.Column] = true;
             }
 
-            // 2xDown Left
-            pos.SetValues(Position.Line + 2, Position.Column - 1);
+            // Up 2xright
+
+            pos.SetValues(Position.Line - 1, Position.Column + 2);
 
             if(Board.IsValidPosition(pos) && CanMove(pos))
             {
                 matriz[pos.Line, pos.Column] = true;
             }
 
-            // 2xDown Right
-            pos.SetValues(Position.Line - 2, Position.Column + 1);
+
+            // 2xDown left
+            pos.SetValues(Position.Line + 2, Position.Column - 1);
+            
+            if(Board.IsValidPosition(pos) && CanMove(pos))
+            {
+                matriz[pos.Line, pos.Column] = true;
+            }
+
+            // Down 2xleft
+            pos.SetValues(Position.Line + 1, Position.Column - 2);
+
+            if(Board.IsValidPosition(pos) && CanMove(pos))
+            {
+                matriz[pos.Line, pos.Column] = true;
+            }
+
+            // 2xDown right
+            pos.SetValues(Position.Line + 2, Position.Column + 1);
+
+            if(Board.IsValidPosition(pos) && CanMove(pos))
+            {
+                matriz[pos.Line, pos.Column] = true;
+            }
+
+            // 2x Right down
+            pos.SetValues(Position.Line + 1, Position.Column + 2);
 
             if(Board.IsValidPosition(pos) && CanMove(pos))
             {

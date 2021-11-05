@@ -59,6 +59,11 @@ namespace Chess
         {
             string s = Console.ReadLine();
 
+            if(s.Length != 2)
+            {
+                throw new BoardException("Posição inválida");
+            }
+
             char column = s[0];
 
             int line = int.Parse(s[1] + "");

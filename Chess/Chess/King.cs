@@ -26,14 +26,6 @@ namespace Chess
 
             Position pos = new(0, 0);
 
-            void ValidMove()
-            {
-                if (Board.IsValidPosition(pos) && CanMove(pos))
-                {
-                    matriz[pos.Line, pos.Column] = true;
-                }
-            }
-
             // N
             pos.SetValues(Position.Line - 1, Position.Column);
             

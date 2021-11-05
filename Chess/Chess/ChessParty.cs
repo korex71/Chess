@@ -84,26 +84,7 @@ namespace Chess
         private void InsertPieces()
 
         {
-            //B
-            Board.InsertPiece(new Tower(Board, Color.Black), new PositionChess('c', 1).ToPosition());
-            Board.InsertPiece(new King(Board, Color.Black), new PositionChess('d', 1).ToPosition());
-            Board.InsertPiece(new Tower(Board, Color.Black), new PositionChess('e', 1).ToPosition());
-
-            Board.InsertPiece(new Tower(Board, Color.Black), new PositionChess('c', 2).ToPosition());
-            Board.InsertPiece(new Tower(Board, Color.Black), new PositionChess('d', 2).ToPosition());
-            Board.InsertPiece(new Tower(Board, Color.Black), new PositionChess('e', 2).ToPosition());
-
-            //W
-            //Board.InsertPiece(new Bishop(Board, Color.White), new PositionChess('d', 4).ToPosition());
-            //Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('a', 7).ToPosition());
-            //Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('b', 7).ToPosition());
-            //Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('c', 7).ToPosition());
-            //Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('d', 7).ToPosition());
-            //Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('e', 7).ToPosition());
-            //Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('f', 7).ToPosition());
-            //Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('g', 7).ToPosition());
-            //Board.InsertPiece(new Tower(Board, Color.White), new PositionChess('h', 7).ToPosition());
-
+            InsertPiecesDefaultGame();
         }
 
         private void InsertPiecesDefaultGame()
@@ -115,6 +96,58 @@ namespace Chess
                 char House = Houses[i];
 
                 Board.InsertPiece(new Pawn(Board, Color.White), new PositionChess(House, 2).ToPosition()); // Insere todos os peões de a-h na segunda fileira ; Brancas
+                Board.InsertPiece(new Pawn(Board, Color.Black), new PositionChess(House, 7).ToPosition()); // Insere todos os peões de a-h na sétima fileira ; Pretas
+
+                //// Insert pieces by default
+
+                if (House == 'a')
+                {
+                    Board.InsertPiece(new Tower(Board, Color.Black), new PositionChess(House, 8).ToPosition());
+                    Board.InsertPiece(new Tower(Board, Color.White), new PositionChess(House, 1).ToPosition());
+                } 
+                
+                if (House == 'h')
+                {
+                    Board.InsertPiece(new Tower(Board, Color.Black), new PositionChess(House, 8).ToPosition());
+                    Board.InsertPiece(new Tower(Board, Color.White), new PositionChess(House, 1).ToPosition());
+                } 
+                
+                if (House == 'b')
+                {
+                    Board.InsertPiece(new Knight(Board, Color.Black), new PositionChess(House, 8).ToPosition());
+                    Board.InsertPiece(new Knight(Board, Color.White), new PositionChess(House, 1).ToPosition());
+                } 
+                
+                if (House == 'g')
+                {
+                    Board.InsertPiece(new Knight(Board, Color.Black), new PositionChess(House, 8).ToPosition());
+                    Board.InsertPiece(new Knight(Board, Color.White), new PositionChess(House, 1).ToPosition());
+                } 
+                
+                if (House == 'c')
+                {
+                    Board.InsertPiece(new Bishop(Board, Color.Black), new PositionChess(House, 8).ToPosition());
+                    Board.InsertPiece(new Bishop(Board, Color.White), new PositionChess(House, 1).ToPosition());
+
+                } 
+                
+                if (House == 'f')
+                {
+                    Board.InsertPiece(new Bishop(Board, Color.Black), new PositionChess(House, 8).ToPosition());
+                    Board.InsertPiece(new Bishop(Board, Color.White), new PositionChess(House, 1).ToPosition());
+                } 
+                
+                if (House == 'e')
+                {
+                    Board.InsertPiece(new King(Board, Color.Black), new PositionChess(House, 8).ToPosition());
+                    Board.InsertPiece(new King(Board, Color.White), new PositionChess(House, 1).ToPosition());
+                } 
+                
+                if (House == 'd')
+                {
+                    Board.InsertPiece(new Queen(Board, Color.Black), new PositionChess(House, 8).ToPosition());
+                    Board.InsertPiece(new Queen(Board, Color.White), new PositionChess(House, 1).ToPosition());
+                }
             };
 
         }
